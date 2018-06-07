@@ -32,7 +32,9 @@ func TestPointImplIsInline(t *testing.T) {
 	p1 := PointImpl{-2, -1}
 	p2 := PointImpl{0, 0}
 	p3 := PointImpl{4, 2}
-	isInline := p1.IsInline(p2,p3)
+	p4 := PointImpl{6, 3}
+	p5 := PointImpl{8, 4}
+	isInline := p1.IsInline(p2,p3, p4,p5)
 	if !isInline {
 		t.Fatalf("result should  true and  not %v", isInline)
 	}
