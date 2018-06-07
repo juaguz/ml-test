@@ -25,7 +25,7 @@ func (p *PlanetImpl) AngularPosition(day uint) float64 {
 	return 360-angularPosition
 
 }
-func (p *PlanetImpl) AngularToPoint(day uint) geometry.Point {
+func (p *PlanetImpl) AngularToPoint(day uint) geometry.PointImpl {
 	degree := p.AngularPosition(day)
 	radians := utils.DegreeToRadian(degree)
 	x := math.Round(math.Cos(radians) * float64(p.Radius))
