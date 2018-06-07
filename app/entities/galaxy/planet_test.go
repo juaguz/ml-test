@@ -1,7 +1,8 @@
-package entities
+package galaxy
 
 import (
 	"testing"
+	"github.com/juaguz/ml-test/app/entities/geometry"
 )
 
 func TestAngularPosition(t *testing.T) {
@@ -32,7 +33,7 @@ func TestAngularPositionAntiClockWise(t *testing.T) {
 }
 
 func TestPlanetImplAngularToPoint(t *testing.T) {
-	expected := PointImpl{996, -87}
+	expected := geometry.PointImpl{996, -87}
 	p := PlanetImpl{
 		Radius: uint(1000),
 		AngularSpeed: uint(5),

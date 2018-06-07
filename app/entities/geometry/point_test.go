@@ -1,4 +1,4 @@
-package entities
+package geometry
 
 import (
 	"testing"
