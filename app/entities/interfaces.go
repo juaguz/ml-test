@@ -7,5 +7,5 @@ type Planet interface {
 }
 
 type Point interface {
-	Distance(p Point) uint
+	Distance(p PointImpl) float64
 }

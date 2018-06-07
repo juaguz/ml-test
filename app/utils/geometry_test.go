@@ -2,7 +2,7 @@ package utils
 
 import (
 	"testing"
-	"fmt"
+
 )
 
 func TestDegreeToRadian(t *testing.T) {
@@ -11,7 +11,10 @@ func TestDegreeToRadian(t *testing.T) {
 	result := DegreeToRadian(degree)
 
 	if result < float64(0.52)  || result > float64(0.53) {
-		t.Fatal(fmt.Sprintf("result should be between 0.52 and 0.53 and its %v", result))
+		t.Fatalf("result should be between 0.52 and 0.53 and its %v", result)
 	}
 }
+
+
+
 
