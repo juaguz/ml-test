@@ -1,0 +1,9 @@
+version: '3'
+services:
+  database:
+    image: postgres:10.1
+    environment:
+      POSTGRES_PASSWORD: ml
+      POSTGRES_DB: weather
+    ports:
+      - "5432:5432"

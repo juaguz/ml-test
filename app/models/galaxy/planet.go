@@ -3,7 +3,7 @@ package galaxy
 import (
 	"math"
 	"github.com/juaguz/ml-test/app/utils"
-	"github.com/juaguz/ml-test/app/entities/geometry"
+	"github.com/juaguz/ml-test/app/models/geometry"
 )
 
 
@@ -13,6 +13,7 @@ type PlanetImpl struct {
 	ClockWise bool
 }
 
+//Calcula la posicion angular dado un dia
 func (p *PlanetImpl) AngularPosition(day uint) float64 {
 	var angularPosition float64
 
@@ -25,6 +26,7 @@ func (p *PlanetImpl) AngularPosition(day uint) float64 {
 	return 360-angularPosition
 
 }
+//Transforma la posicion angular a un punto en el eje cartesiano
 func (p *PlanetImpl) AngularToPoint(day uint) geometry.PointImpl {
 	degree := p.AngularPosition(day)
 	radians := utils.DegreeToRadian(degree)

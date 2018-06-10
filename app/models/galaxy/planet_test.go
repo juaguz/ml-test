@@ -2,7 +2,7 @@ package galaxy
 
 import (
 	"testing"
-	"github.com/juaguz/ml-test/app/entities/geometry"
+	"github.com/juaguz/ml-test/app/models/geometry"
 )
 
 func TestAngularPosition(t *testing.T) {

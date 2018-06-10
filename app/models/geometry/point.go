@@ -8,6 +8,7 @@ type PointImpl struct {
 	X,Y float64
 }
 
+//Calucla la distancia entre dos pintos
 func (pi PointImpl) Distance(p PointImpl) float64 {
 	x1 := pi.X
 	x2 := p.X
@@ -18,7 +19,11 @@ func (pi PointImpl) Distance(p PointImpl) float64 {
   	return math.Sqrt(xPow+yPow)
 }
 
-func (pi PointImpl) IsInline(points ...PointImpl) bool {
+//Determina si un conjunto de puntos son colineales
+// Por ejemplo los 3 planetas mas el sol
+// Los puntos tienen que estar ordenados
+//https://vitual.lat/determinar-si-tres-puntos-son-colineales-con-la-formula-de-la-distancia/
+func (pi PointImpl) IsCollinear(points ...PointImpl) bool {
 	pointsLen := len(points)
 	if pointsLen < 1 {
 		panic("not enough arguments")
