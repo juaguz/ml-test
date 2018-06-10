@@ -3,11 +3,7 @@ package config
 import "github.com/juaguz/config"
 
 type Config struct {
-	Host string
-	Port string
-	DbName string
-	Username string
-	Password string
+    Database string
 	Driver string
 }
 
