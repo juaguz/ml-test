@@ -11,21 +11,31 @@ type weatherRepo struct {
 }
 
 //Inicializador del repo
-func NewWeatherRepo(session *sql.DB) WeatherRepo {
-	return &weatherRepo{session}
+func NewWeatherRepo(db *sql.DB) WeatherRepo {
+	return &weatherRepo{db}
 }
 //Guarda en la base de datos el dia
 // y  setea el id al objeto guardado
 func (w *weatherRepo) Store(weather *weatherEntity.Weather) (error) {
+	tx, err := w.DB.Begin()
+	if err != nil {
+		return err
+	}
 	stm := "INSERT INTO predictions (number_day, weather) VALUES ($1, $2) RETURNING id"
-	err := w.DB.QueryRow(stm,weather.Day,weather.Weather).Scan(&weather.Id)
+	result,err := tx.Exec(stm,weather.Day,weather.Weather)
+	if err != nil {
+		tx.Rollback()
+		return err
+	}
+	tx.Commit()
+	weather.Id, _ = result.LastInsertId()
 	return err
 }
 
 //Busca en la base de datos el dia
 func (w *weatherRepo) Find(day int64) (weatherEntity.Weather,error) {
 	weather := weatherEntity.Weather{}
-	stm := "SELECT id, number_day, weather FROM predictions where number_day = $1"
+	stm := "SELECT * FROM predictions where number_day = $1"
 	rows, err := w.DB.Query(stm, day)
 	if err != nil {
 		log.Println(err)
